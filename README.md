@@ -137,6 +137,14 @@ Projeto desenvolvido pelo **Grupo 23**, do **Polo Mauriti**, no curso de **Anál
 
 ---
 
+## 📝 Notas de Revisão Técnica
+Correções realizadas por **José Nataniel Gomes Pereira**:
+- Ajuste de nomenclatura na tabela `professor`: `diciplina` → `disciplina`.
+- Padronização de nomenclatura na tabela `comportamento`: `observacoes` → `observacao`.
+Essas alterações garantem maior consistência e clareza no projeto físico do banco de dados.
+
+---
+
 ## 📌 Observação Final
 
 Este banco de dados foi desenvolvido para fins acadêmicos, com foco no aprendizado de modelagem de dados, definição de entidades, relacionamentos e implementação física do banco de dados, servindo como base para a futura implementação do sistema SAEPD.
