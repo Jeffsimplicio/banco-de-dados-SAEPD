@@ -18,7 +18,7 @@ CREATE TABLE professor (
     id_professor SERIAL PRIMARY KEY,
     nome character varying(100) NOT NULL UNIQUE,
     email character varying(100) NOT NULL UNIQUE,
-    diciplina character varying(100) NOT NULL,
+    disciplina character varying(100) NOT NULL,
     login character varying(100) NOT NULL UNIQUE,
     senha character varying(255) NOT NULL,
     id_adm integer REFERENCES public.administrador(id_adm),
@@ -59,7 +59,7 @@ CREATE TABLE comportamento (
     id_aluno integer REFERENCES public.aluno(id_aluno),
     id_professor integer REFERENCES public.professor(id_professor),
     avaliacao character varying(50),
-    observacoes text,
+    observacao text,
     data date
 );
 
