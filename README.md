@@ -2,27 +2,50 @@
 
 Este repositório contém a modelagem do banco de dados do sistema **SAEPD – Sistema de Acompanhamento Escolar para Pais e Docentes**, desenvolvido como parte do Projeto Integrado do curso de **Análise e Desenvolvimento de Sistemas (UFCA/CEAD – Polo Mauriti)**.
 
-O banco de dados foi projetado para armazenar e organizar informações acadêmicas, administrativas e de comunicação entre a escola, professores, alunos e responsáveis, garantindo integridade, organização e confiabilidade dos dados.
+O banco de dados foi projetado para armazenar, organizar e garantir a integridade de informações acadêmicas, administrativas e de comunicação entre a escola, professores, alunos e responsáveis, assegurando confiabilidade, consistência e segurança dos dados.
 
 ---
 
 ## 🎯 Objetivo do Banco de Dados
 
-O objetivo do banco de dados do SAEPD é permitir o armazenamento estruturado de dados essenciais ao funcionamento do sistema, como o cadastro de usuários, informações dos alunos, controle de turmas, registros acadêmicos e comunicação entre escola e família. Essa estrutura facilita o acompanhamento escolar e contribui para uma gestão educacional mais eficiente.
+O banco de dados do SAEPD tem como objetivo permitir o armazenamento estruturado de dados essenciais para o funcionamento do sistema, incluindo cadastro de usuários, dados acadêmicos dos alunos, controle de turmas, registros de desempenho escolar e comunicação entre escola e família.
+
+Essa estrutura contribui diretamente para o acompanhamento educacional, apoiando a tomada de decisão e melhorando a gestão escolar.
 
 ---
 
 ## 🗃️ Projeto Físico de Banco de Dados (EP2)
 
-O **projeto físico de banco de dados** é a etapa em que o modelo conceitual é **convertido em tabelas e comandos que um sistema gerenciador de banco de dados (SGBD) pode utilizar**. Isso inclui definir:
+O **projeto físico de banco de dados** é a etapa onde o modelo conceitual e lógico são convertidos em estruturas reais que podem ser implementadas em um Sistema Gerenciador de Banco de Dados (SGBD), como MySQL, PostgreSQL ou SQL Server.
 
-- nomes das tabelas;
-- tipos de dados para cada coluna;
-- **chaves primárias** (PK) e **chaves estrangeiras** (FK);
-- restrições de integridade (`NOT NULL`, `UNIQUE`, etc.);
-- índices quando necessários para melhorar o desempenho.
+Nesta fase são definidos:
 
-Essa fase é importante porque garante que os dados serão **armazenados corretamente e com integridade**, evitando inconsistências e duplicidades, e permitindo que o sistema funcione de forma eficiente.
+- Estrutura real das tabelas;
+- Tipos de dados adequados para cada coluna;
+- **Chaves Primárias (PK)** para identificação única dos registros;
+- **Chaves Estrangeiras (FK)** para garantir integridade referencial;
+- Restrições de integridade (`NOT NULL`, `UNIQUE`, entre outras);
+- Índices para otimização de consultas e melhoria de desempenho.
+
+No projeto SAEPD, o projeto físico foi implementado utilizando **PostgreSQL** e linguagem **SQL**, por meio de comandos **DDL (Data Definition Language)** responsáveis pela criação das tabelas, definição de chaves primárias, estrangeiras e restrições de integridade.
+
+O projeto físico é essencial porque garante que os dados sejam armazenados de forma correta, organizada e segura, evitando inconsistências, redundâncias e falhas no funcionamento do sistema.
+
+---
+
+## 💡 Importância do Projeto Físico para Programadores
+
+Para estudantes e desenvolvedores, compreender o projeto físico é fundamental porque permite:
+
+- Desenvolver sistemas mais performáticos;
+- Garantir integridade e consistência dos dados;
+- Facilitar manutenção e evolução do sistema;
+- Aproximar o conhecimento teórico da prática profissional;
+- Facilitar integração entre banco de dados e aplicações backend.
+
+Sem um projeto físico bem estruturado, mesmo sistemas bem desenvolvidos podem apresentar problemas de desempenho, segurança e confiabilidade.
+
+O projeto também considerou princípios básicos de **normalização** e **integridade referencial**, com o objetivo de evitar redundâncias e inconsistências nos dados.
 
 ---
 
@@ -42,28 +65,59 @@ As principais entidades do projeto físico do banco de dados SAEPD são:
 - **Mensagem**
 - **Justificativa**
 
-Cada uma dessas tabelas representa um elemento do ambiente escolar e foi projetada para refletir corretamente os requisitos do sistema.
+Cada tabela foi projetada considerando os requisitos funcionais do sistema e princípios de organização e integridade de dados.
 
 ---
 
-## 🔗 Explicação das Cardinalidades
+## 🔗 Relacionamentos e Cardinalidades
 
 As relações entre as tabelas foram definidas para garantir coerência e integridade dos dados:
 
-1. **Administrador → (1:N) → Professor, Turma, Aluno e Responsável** – um administrador pode cadastrar muitos usuários e turmas.  
-2. **Professor → (1:N) → Nota, Frequência, Comportamento, Ocorrência e Mensagem** – um professor pode registrar muitas avaliações e mensagens.  
-3. **Responsável → (1:N) → Aluno, Mensagem e Justificativa** – um responsável pode acompanhar vários alunos e enviar mensagens/justificativas.  
-4. **Aluno → (1:N) → Nota, Frequência, Comportamento e Ocorrência** – um aluno tem vários registros de desempenho.  
-5. **Turma → (1:N) → Aluno** – uma turma contém vários alunos.  
-6. **Turma → (N:1) → Professor** – um professor pode ministrar várias turmas.  
-7. **Mensagem → (N:1) → Professor ou Responsável** – várias mensagens podem pertencer a um mesmo usuário.  
-8. **Justificativa → (N:1) → Aluno** – várias justificativas podem referir-se a um aluno.
+1. **Administrador → (1:N) → Professor, Turma, Aluno e Responsável**  
+   Um administrador pode cadastrar vários usuários e turmas.
+
+2. **Professor → (1:N) → Nota, Frequência, Comportamento, Ocorrência e Mensagem**  
+   Um professor pode registrar múltiplos dados acadêmicos e comunicacionais.
+
+3. **Responsável → (1:N) → Aluno, Mensagem e Justificativa**  
+   Um responsável pode acompanhar vários alunos e enviar comunicações.
+
+4. **Aluno → (1:N) → Nota, Frequência, Comportamento e Ocorrência**  
+   Um aluno possui múltiplos registros de desempenho.
+
+5. **Turma → (1:N) → Aluno**  
+   Uma turma pode possuir vários alunos.
+
+6. **Professor → (1:N) → Turma**  
+   Um professor pode lecionar em várias turmas.
+
+7. **Mensagem → (N:1) → Professor ou Responsável**  
+   Várias mensagens podem estar associadas a um mesmo usuário.
+
+8. **Justificativa → (N:1) → Aluno**  
+   Um aluno pode possuir várias justificativas registradas.
+
+---
+
+## 🔒 Integridade e Confiabilidade dos Dados
+
+O banco foi projetado priorizando:
+
+- Integridade referencial entre tabelas;
+- Redução de redundância de dados;
+- Aplicação de restrições de validação;
+- Organização lógica das informações;
+- Facilidade de manutenção e escalabilidade.
+
+Foram considerados princípios básicos de normalização para garantir melhor organização e evitar inconsistências.
 
 ---
 
 ## 🏫 Contexto de Uso no Mundo Real
 
-O banco de dados do SAEPD pode ser utilizado em escolas públicas ou privadas para organizar informações acadêmicas, melhorar a comunicação entre escola e família e facilitar o acompanhamento do desempenho dos alunos. A estrutura proposta contribui para uma gestão escolar mais eficiente e transparente.
+O banco de dados SAEPD pode ser aplicado em instituições de ensino públicas ou privadas para organização de informações acadêmicas, melhoria da comunicação entre escola e família e acompanhamento do desempenho dos alunos.
+
+A estrutura proposta contribui para uma gestão educacional mais eficiente, transparente e confiável.
 
 ---
 
@@ -85,4 +139,4 @@ Projeto desenvolvido pelo **Grupo 23**, do **Polo Mauriti**, no curso de **Anál
 
 ## 📌 Observação Final
 
-Este banco de dados foi desenvolvido para fins acadêmicos, com foco no aprendizado de modelagem de dados, definição de entidades e cardinalidades, servindo como base para a implementação do sistema SAEPD.
+Este banco de dados foi desenvolvido para fins acadêmicos, com foco no aprendizado de modelagem de dados, definição de entidades, relacionamentos e implementação física do banco de dados, servindo como base para a futura implementação do sistema SAEPD.
