@@ -12,43 +12,58 @@ O objetivo do banco de dados do SAEPD é permitir o armazenamento estruturado de
 
 ---
 
+## 🗃️ Projeto Físico de Banco de Dados (EP2)
+
+O **projeto físico de banco de dados** é a etapa em que o modelo conceitual é **convertido em tabelas e comandos que um sistema gerenciador de banco de dados (SGBD) pode utilizar**. Isso inclui definir:
+
+- nomes das tabelas;
+- tipos de dados para cada coluna;
+- **chaves primárias** (PK) e **chaves estrangeiras** (FK);
+- restrições de integridade (`NOT NULL`, `UNIQUE`, etc.);
+- índices quando necessários para melhorar o desempenho.
+
+Essa fase é importante porque garante que os dados serão **armazenados corretamente e com integridade**, evitando inconsistências e duplicidades, e permitindo que o sistema funcione de forma eficiente.
+
+---
+
 ## 🧩 Entidades Principais
 
-As principais entidades que compõem o banco de dados do SAEPD são:
+As principais entidades do projeto físico do banco de dados SAEPD são:
 
-Administrador, Professor, Responsável, Aluno, Turma, Nota, Frequência, Comportamento, Ocorrência, Mensagem e Justificativa.
+- **Administrador**
+- **Professor**
+- **Responsável**
+- **Aluno**
+- **Turma**
+- **Nota**
+- **Frequência**
+- **Comportamento**
+- **Ocorrência**
+- **Mensagem**
+- **Justificativa**
 
-Cada entidade representa um elemento real do ambiente escolar e foi definida para refletir corretamente os processos do sistema.
+Cada uma dessas tabelas representa um elemento do ambiente escolar e foi projetada para refletir corretamente os requisitos do sistema.
 
 ---
 
 ## 🔗 Explicação das Cardinalidades
 
-As cardinalidades representam como as entidades do banco de dados se relacionam entre si. No sistema SAEPD, essas relações foram definidas da seguinte forma:
+As relações entre as tabelas foram definidas para garantir coerência e integridade dos dados:
 
-O **Administrador** possui relação **1:N** com Professor, Turma, Aluno e Responsável, pois um administrador pode cadastrar vários desses registros no sistema.
-
-O **Professor** possui relação **1:N** com Nota, Frequência, Comportamento, Ocorrência e Mensagem, já que pode registrar diversas informações acadêmicas e se comunicar com responsáveis.
-
-O **Responsável** possui relação **1:N** com Aluno, Mensagem e Justificativa, podendo acompanhar mais de um aluno e enviar comunicações à escola.
-
-O **Aluno** possui relação **1:N** com Nota, Frequência, Comportamento e Ocorrência, permitindo o acompanhamento contínuo do seu desempenho escolar.
-
-A **Turma** possui relação **1:N** com Aluno, pois uma turma pode conter vários alunos matriculados.
-
-A **Turma** possui relação **N:1** com Professor, já que um professor pode ministrar mais de uma turma.
-
-A **Mensagem** possui relação **N:1** com Professor ou Responsável, facilitando a comunicação entre as partes envolvidas.
-
-A **Justificativa** possui relação **N:1** com Aluno, permitindo que um aluno tenha várias justificativas registradas.
-
-Essas relações refletem corretamente o funcionamento de um sistema escolar real.
+1. **Administrador → (1:N) → Professor, Turma, Aluno e Responsável** – um administrador pode cadastrar muitos usuários e turmas.  
+2. **Professor → (1:N) → Nota, Frequência, Comportamento, Ocorrência e Mensagem** – um professor pode registrar muitas avaliações e mensagens.  
+3. **Responsável → (1:N) → Aluno, Mensagem e Justificativa** – um responsável pode acompanhar vários alunos e enviar mensagens/justificativas.  
+4. **Aluno → (1:N) → Nota, Frequência, Comportamento e Ocorrência** – um aluno tem vários registros de desempenho.  
+5. **Turma → (1:N) → Aluno** – uma turma contém vários alunos.  
+6. **Turma → (N:1) → Professor** – um professor pode ministrar várias turmas.  
+7. **Mensagem → (N:1) → Professor ou Responsável** – várias mensagens podem pertencer a um mesmo usuário.  
+8. **Justificativa → (N:1) → Aluno** – várias justificativas podem referir-se a um aluno.
 
 ---
 
 ## 🏫 Contexto de Uso no Mundo Real
 
-O banco de dados do SAEPD pode ser aplicado em escolas públicas ou privadas para organizar informações acadêmicas, melhorar a comunicação entre escola e família e facilitar o acompanhamento do desempenho dos alunos. A estrutura proposta contribui para uma gestão escolar mais eficiente e transparente.
+O banco de dados do SAEPD pode ser utilizado em escolas públicas ou privadas para organizar informações acadêmicas, melhorar a comunicação entre escola e família e facilitar o acompanhamento do desempenho dos alunos. A estrutura proposta contribui para uma gestão escolar mais eficiente e transparente.
 
 ---
 
@@ -56,15 +71,15 @@ O banco de dados do SAEPD pode ser aplicado em escolas públicas ou privadas par
 
 Projeto desenvolvido pelo **Grupo 23**, do **Polo Mauriti**, no curso de **Análise e Desenvolvimento de Sistemas – UFCA/CEAD**.
 
-**Ilma** – Documentação e explicação da modelagem do banco de dados, incluindo a descrição das entidades, cardinalidades e contexto de uso do sistema.
+**Ilma Rodrigues V. Azevedo** – Documentação do projeto físico de banco de dados e explicação das entidades e cardinalidades.
 
-**Erislânio Jacó da Silva** – Participação no desenvolvimento do projeto, contribuindo para a organização da modelagem e apoio nas atividades técnicas.
+**Erislânio Jacó da Silva** – Participação no desenvolvimento geral do projeto.
 
-**Gyan Carlos Mateus de Oliveira** – Apoio no desenvolvimento do projeto e na organização geral das entregas.
+**Gyan Carlos Mateus de Oliveira** – Contribuição nas atividades gerais de desenvolvimento.
 
-**José Nataniel Gomes Pereira** – Participação nas atividades técnicas do projeto, auxiliando na elaboração e revisão dos materiais.
+**José Nataniel Gomes Pereira** – Contribuição técnica e revisão de conteúdo.
 
-**Francisco Jeferson Simplicio de Sousa** – Gerência do repositório no GitHub, controle de versões e integração dos entregáveis da equipe.
+**Francisco Jeferson Simplicio de Sousa** – Gerência do repositório no GitHub, controle de versões e integração dos entregáveis.
 
 ---
 
