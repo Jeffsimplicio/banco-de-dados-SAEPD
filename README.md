@@ -141,6 +141,7 @@ Projeto desenvolvido pelo **Grupo 23**, do **Polo Mauriti**, no curso de **Anál
 Correções realizadas:
 - Ajuste de nomenclatura na tabela professor: →diciplina →disciplina.
 - Padronização de nomenclatura na tabela comportamento: →observacoes →observacao.
+  
 Essas alterações garantem maior consistência e clareza no projeto físico do banco de dados.
 
 ---
